@@ -6,7 +6,7 @@ function addNumbers(){
     var b = document.getElementById("b").value
     document.getElementById("a").value=""
     document.getElementById("a").value=""
-
+    document.getElementById("log").value=""
     var options = {
         scriptPath: path.join(__dirname, '/../engine/'),
         args: [a,b]
@@ -15,6 +15,8 @@ function addNumbers(){
     var add = new python('main.py', options);
 
     add.on('message', function (message) {
+        console.log("new message!!")
         console.log(message);
+        document.getElementById("log").value+=message;
     })
 }
